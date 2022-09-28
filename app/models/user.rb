@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-         KANGI_RENGE = /\A[ぁ-んァ-ヶ一-龥々]+\z/.freeze
+         KANGI_RENGE = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze
          KATAKANA_RENGE = /\A[ァ-ヶー－]+\z/.freeze
   validates :password, format: { with: PASSWORD_REGEX }, allow_blank: true
   validates :nickname, presence: true
