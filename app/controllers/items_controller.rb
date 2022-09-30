@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit]
   before_action :set_item, except: [:index, :new, :create]
   before_action :contributor_confirmation, only: [:edit, :update]
 
@@ -47,6 +47,6 @@ class ItemsController < ApplicationController
   end
 
   def contributor_confirmation
-    redirect_to root_path unless user_signed_in? && @item.user_id == current_user.id
+    redirect_to root_path unless @item.user_id == current_user.id
   end
 end
