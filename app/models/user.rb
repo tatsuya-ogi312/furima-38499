@@ -2,9 +2,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-         KANGI_RENGE = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze
-         KATAKANA_RENGE = /\A[ァ-ヶー－]+\z/.freeze
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  KANGI_RENGE = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze
+  KATAKANA_RENGE = /\A[ァ-ヶー－]+\z/.freeze
   validates :password, format: { with: PASSWORD_REGEX }
   validates :nickname, presence: true
   validates :last_name, presence: true
@@ -14,9 +14,8 @@ class User < ApplicationRecord
   validates :last_name_kana, presence: true
   validates :last_name_kana, format: { with: KATAKANA_RENGE }
   validates :first_name_kana, presence: true
-  validates :first_name_kana,format: { with: KATAKANA_RENGE }
+  validates :first_name_kana, format: { with: KATAKANA_RENGE }
   validates :birthday, presence: true
 
   has_many :items
-
 end
