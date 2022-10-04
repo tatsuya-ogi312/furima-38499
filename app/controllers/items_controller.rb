@@ -50,6 +50,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   def contributor_confirmation
-    redirect_to root_path unless @item.user_id == current_user.id && @item.order == nil
+    redirect_to root_path unless @item.user_id == current_user.id || @item.order == nil
   end
 end
