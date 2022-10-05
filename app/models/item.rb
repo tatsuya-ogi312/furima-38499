@@ -11,9 +11,9 @@ class Item < ApplicationRecord
 
   validates :name, :content, :image, presence: true
   validates :category_id, :status_id, :shipping_cost_id, :shipping_day_id,
-            :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+            :prefecture_id, numericality: { other_than: 1, message: "を入力してください" }
   validates :price, presence: true
   validates :price,
-            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
-  validates :price, numericality: { only_integer: true, message: 'Half-width number' }
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'が入力できる範囲外です' }
+  validates :price, numericality: { only_integer: true, message: 'を半角数字で入力してください' }
 end
